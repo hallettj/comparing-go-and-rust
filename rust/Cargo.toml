@@ -1,0 +1,8 @@
+[package]
+name = "comparison"
+version = "0.0.1"
+authors = [ "Jesse Hallett <jessehallett@invisionapp.com>" ]
+
+[dependencies]
+futures = "0.1"
+rayon = "0.6"
