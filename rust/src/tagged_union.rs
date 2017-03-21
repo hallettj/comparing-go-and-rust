@@ -6,7 +6,7 @@ use std::thread;
 // compile-time error.
 #[derive(Clone, Copy, Debug)]
 pub enum CounterInstruction {
-    Increment(isize),
+    Increment(isize),  // `isize` is an integer type that matches the platform word size
     Reset,
     Terminate,
 }
@@ -19,6 +19,7 @@ pub fn new_counter() -> (Sender<CounterInstruction>, Receiver<CounterResponse>) 
     let (instr_tx, instr_rx) = channel::<CounterInstruction>();
     let (resp_tx,  resp_rx)  = channel::<CounterResponse>();
 
+    // Run the counter in a background thread
     thread::spawn(move || {
         let mut count: isize = 0;
 
@@ -45,6 +46,7 @@ pub fn new_counter() -> (Sender<CounterInstruction>, Receiver<CounterResponse>) 
 
     });
 
+    // Return the instruction sender, and the response receiver
     (instr_tx, resp_rx)
 }
 

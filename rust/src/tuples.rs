@@ -1,6 +1,7 @@
 use std::cmp;
 
 // Returns a tuple
+// (`isize` is an integer type that matches the platform word size)
 pub fn min_and_max(xs: &[isize]) -> (isize, isize) {
     let init = (xs[0], xs[0]);
     xs.iter()
