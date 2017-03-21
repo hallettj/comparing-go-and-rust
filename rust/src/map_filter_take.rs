@@ -7,8 +7,8 @@ pub struct Document {
 
 pub fn latest_titles(docs: &[Document], count: usize) -> Vec<&str> {
     docs.iter()
-        .filter(|ref doc| !doc.is_archived)
-        .map(|ref doc| doc.title.as_str())
+        .filter(|doc| !doc.is_archived)
+        .map(|doc| doc.title.as_str())
         .take(count)
         .collect()
 }
